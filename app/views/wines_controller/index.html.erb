@@ -1,0 +1,22 @@
+<h1>WinesController#index</h1>
+<p>Find me in app/views/wines_controller/index.html.erb</p>
+
+table>
+  <tr>
+    <th>Wines</th>
+    <th>Body</th>
+  </tr>
+
+<% for wines in @wines %>
+  <tr>
+    <td><%=h name.name %></td>
+    <td><%=h year.year %></td>
+    <td><%=h winery.winery %></td>
+    <td><%=h country.country %></td>
+    td><%=h varietal.varietal %></td>
+    <td><%= link_to 'Show', wines_name_year_winery_country_varietal_path(@wines, name, year, winery, country, varietal) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
