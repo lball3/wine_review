@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201224504) do
+ActiveRecord::Schema.define(version: 20151227011919) do
+
+  create_table "log_entries", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "rating"
+    t.string   "location"
+    t.datetime "tasted_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "wine_id"
+  end
+
+  add_index "log_entries", ["wine_id"], name: "index_log_entries_on_wine_id"
 
   create_table "wines", force: :cascade do |t|
     t.string   "name"
