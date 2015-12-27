@@ -1,0 +1,51 @@
+<%- model_class = Wine -%>
+<div class="page-header">
+  <h1>Wine</h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Name:</strong></dt>
+  <dd><%= @wine.name %></dd>
+  <dt><strong>Year:</strong></dt>
+  <dd><%= @wine.year %></dd>
+  <dt><strong>Winery:</strong></dt>
+  <dd><%= @wine.winery %></dd>
+  <dt><strong>Country:</strong></dt>
+  <dd><%= @wine.country %></dd>
+  <dt><strong>Varietal:</strong></dt>
+  <dd><%= @wine.varietal %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to "Back", wines_path, :class => 'btn btn-primary'  %>
+  <%= link_to "Edit", edit_wine_path(@wine), :class => 'btn btn-primary' %>
+  <%= link_to "Delete", wine_path(@wine), :method => 'delete',
+              :data => { :confirm => 'Are you sure?' },
+              :class => 'btn btn-danger' %>
+</div>
+<h2>Reviews</h2>
+
+<% @wine.log_entries.each do |log_entry| %>
+<hr />
+  <div>
+    <dl class="dl-horizontal">
+      <dt><strong>Name:</strong></dt>
+      <dd><%= log_entry.name %></dd>
+      <dt><strong>Rating:</strong></dt>
+      <dd><%= log_entry.rating %></dd>
+      <dt><strong>Location:</strong></dt>
+      <dd><%= log_entry.location %></dd>
+      <dt><strong>Tasted On:</strong></dt>
+      <dd><%= log_entry.tasted_on %></dd>
+    </dl>
+  </div>
+<% end %>
+
+<%= link_to 'New Review',
+            new_wine_log_entry_path(@wine),
+            remote: true,
+            data: { 'update-target' => 'new-log-entry-container' },
+            :class => 'btn btn-primary' %>
+
+
+<div id="new-log-entry-container"></div>

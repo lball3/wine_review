@@ -1,0 +1,22 @@
+<%- model_class = LogEntry -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>Wine</strong></dt>
+  <dd><%= @log_entry.wine.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @log_entry.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:rating) %>:</strong></dt>
+  <dd><%= @log_entry.rating %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:location) %>:</strong></dt>
+  <dd><%= @log_entry.location %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:tasted_on) %>:</strong></dt>
+  <dd><%= @log_entry.tasted_on %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              log_entries_path, :class => 'btn btn-primary'  %>
+</div>

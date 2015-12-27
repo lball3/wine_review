@@ -5,7 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-6.times do
 
 Wine.create([
 { name: 'Riesling',year: 1990, winery: 'Old Vine of riesling',country: 'Germany', varietal: 'lighter than Chardonnay'},
@@ -16,4 +15,3 @@ Wine.create([
 { name: 'Cabernet Sauvignon',year: 1965, winery: 'Cabernet sauvignon',country: 'Germany', varietal: 'full-bodied, but firm'}
   ])
   
-end 

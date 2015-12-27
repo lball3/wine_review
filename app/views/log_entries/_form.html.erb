@@ -1,0 +1,47 @@
+<%= form_for([@wine, @log_entry]) do |f| %>
+
+  <% if @log_entry.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@log_entry.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @log_entry.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :rating, :class => 'control-label' %>
+    <div class="controls">
+      <% LogEntry::RATINGS.each do |item| %>
+        <%= f.radio_button :rating, item %> <%= item %><br />
+      <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :location, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :tasted_on, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :tasted_on, :class => 'text_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                wine_path(@wine), :class => 'btn btn-default' %>
+  </div>
+<% end %>

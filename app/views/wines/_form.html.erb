@@ -1,0 +1,51 @@
+<%= form_for @wine, :html => { :class => 'form-horizontal' } do |f| %>
+
+  <% if @wine.errors.any? %>
+    <div id="error_explanation">
+      <h4><%= pluralize(@wine.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @wine.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :year, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :year, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :winery, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :winery, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :country, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :country, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :varietal, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :varietal, Wine::VARIETALS, { prompt: "Pick one" } %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                wines_path, :class => 'btn' %>
+  </div>
+<% end %>
